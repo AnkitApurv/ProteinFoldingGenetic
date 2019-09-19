@@ -93,7 +93,7 @@ struct EnergyVar *firstE[populationSize] , *lastE[populationSize],  *tmpFirstE[4
 
 
 
-//Structure holding theenergy variation value of each sequence formed
+//Structure holding the energy variation value of each sequence formed
 struct Energy_
 {
 	int i;
