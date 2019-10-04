@@ -44,7 +44,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(MSBuildProjectDirectory)\dependencies\glew\include\;$(MSBuildProjectDirectory)\dependencies\OpenGLUT\;$(IncludePath)</IncludePath>
+    <IncludePath>$(CUDA_PATH)\include\;$(MSBuildProjectDirectory)\dependencies\glew\include\;$(MSBuildProjectDirectory)\dependencies\OpenGLUT\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(CUDA_PATH)\lib\Win32\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -66,7 +67,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(MSBuildProjectDirectory)\dependencies\glew\lib\Release\Win32\glew32s.lib;$(MSBuildProjectDirectory)\dependencies\\OpenGLUT\\OpenGLUT_static.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>OpenCL.lib;$(MSBuildProjectDirectory)\dependencies\glew\lib\Release\Win32\glew32s.lib;$(MSBuildProjectDirectory)\dependencies\OpenGLUT\OpenGLUT.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <SuppressStartupBanner>false</SuppressStartupBanner>
     </Link>
@@ -122,6 +123,7 @@
   <ItemGroup>
     <ClCompile Include="GUI-1.cpp" />
     <ClCompile Include="GUI-1Dlg.cpp" />
+    <ClCompile Include="openclhelpers.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -133,6 +135,7 @@
   <ItemGroup>
     <None Include="resource.hm" />
     <None Include="res\GUI1.rc2" />
+    <None Include="source.cl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\GUI-1.ico" />

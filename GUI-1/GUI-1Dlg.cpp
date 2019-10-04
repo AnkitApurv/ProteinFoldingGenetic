@@ -1,6 +1,8 @@
 
 // GUI-1Dlg.cpp : implementation file
 
+#pragma region headersMacroes
+
 //project's headers
 #include "stdafx.h"
 #include "GUI-1.h"
@@ -35,15 +37,20 @@
 #define MAX 200
 #define populationSize 20
 #define ISEMPTY printf_s("\n Not a nice path\n");
-double start, end, spent;
+
+#pragma endregion
+
+#pragma region variables
+
+double start=0.0, end=0.0, spent=0.0;
 
 //Declaration Section
-int moves;
+int moves=0;
 
-int id1,choice;
+int id1=0,choice=0;
 
 //Variables used in graphics part for retrieving current height and width of the screen
-int CurrentWidth,CurrentHeight,dif;
+int CurrentWidth=0,CurrentHeight=0,dif=0;
 
 //fptrI: Input file pointer to read the string from the file "input.txt"
 //fptrO: Output file pointer to read the string from the file "result.txt"
@@ -51,7 +58,7 @@ int CurrentWidth,CurrentHeight,dif;
 FILE *fptrO,*fptrOB,*fptrI;
 
 //Current coordinates 
-int row,col,x,y;
+int row=0,col=0,x=0,y=0;
 
 //str : input string
 //res : printenergy variation on the screen
@@ -61,7 +68,7 @@ char res[MAX],val[4];
 char str[MAX];
 
 //other variables used in computation
-short int k,l=0,maxRow,maxCol,minRow,minCol,cordinates[(2*MAX)][(4*MAX)];
+short int k=0,l=0,maxRow=0,maxCol=0,minRow=0,minCol=0,cordinates[(2*MAX)][(4*MAX)];
 
 char direction[(2*MAX)][(4*MAX)];
 
@@ -101,6 +108,9 @@ struct Energy_
 	//double FEV;
 }Energy[populationSize],tmp,Efinal[4];
 
+#pragma endregion
+
+#pragma region nodeManagement
 
 struct node* create_node(short int x,short int y,short int v)
 {//allocate a node in the resultant sequence 
@@ -217,6 +227,9 @@ void insert_nodeEFinal(short int x1,short int y1,short int x2,short int y2)
 
 }  
 
+#pragma endregion
+
+#pragma region geneticAlgorithm
 
 void result()
 {	//Insert the resultant sequence
@@ -491,7 +504,6 @@ int findMaxVariation(int size,struct Energy_ Energy[])
 }
 
 
-
 void sortEnergySt()
 {//Sort the HEV structure based on theenergy variation found. 
 	//Function is executed so that the top 10 sequences are choosen and written into the output file
@@ -534,6 +546,9 @@ void sortEnergySt()
 
 }
 
+#pragma endregion
+
+#pragma region procedures
 
 void procedureTriangular()
 {
@@ -936,7 +951,6 @@ void procedureTriangular()
 }
 
 
-
 void procedureSquare(int Case,int e)
 {
 	//Function for performing the fold
@@ -1239,11 +1253,11 @@ void procedureSquare(int Case,int e)
 
 }
 
+#pragma endregion
 
 
 
-
-
+#pragma region graphics
 //Following section for drawing 
 
 
@@ -1895,9 +1909,6 @@ void CGUI1Dlg::OnEnChangetxtinput2()
 
 
 
-
-
-
 void CGUI1Dlg::OnEnKillfocustxtinput()
 {
 	// TODO: Add your control notification handler code here
@@ -1906,3 +1917,4 @@ void CGUI1Dlg::OnEnKillfocustxtinput()
 }
 
 
+#pragma endregion
