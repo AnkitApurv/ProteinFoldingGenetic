@@ -12,12 +12,13 @@
 #include "afxdialogex.h"
 
 //standard library headers
-#include<stdlib.h>
+//#include<stdlib.h>
+#define _USE_MATH_DEFINES	//for M_PI from math.h
 #include<math.h>
-#include<windows.h>
+//#include<windows.h>
 #include<stdio.h>
-#include<string.h>
-#include<time.h>
+//#include<string.h>
+//#include<time.h>
 
 //GLEW library header
 #include <gl/glew.h>
@@ -30,12 +31,10 @@
 #define new DEBUG_NEW
 #endif
 
-
-
 //Macros section
-#define pi 3.1415926
-#define MAX 200
-#define populationSize 20
+//#define pi 3.1415926
+const int MAX = 200;
+const int populationSize = 20;
 #define ISEMPTY printf_s("\n Not a nice path\n");
 
 #pragma endregion
@@ -1310,7 +1309,7 @@ void DrawCircle(float x_pt, float y_pt, float radius, int num_segments)
 float angle,x,y;
 for( ii = 0; ii < num_segments; ii++) 
 {	//formula used arc_length=radius*angle
-	angle = 2.0 * pi * float(ii) / float(num_segments);//get the current angle 
+	angle = 2.0 * M_PI * float(ii) / float(num_segments);//get the current angle NOTE #define pi M_PI
 
 	x = radius * cosf(angle);//calculate the x component 
 	y = radius * sinf(angle);//calculate the y component 

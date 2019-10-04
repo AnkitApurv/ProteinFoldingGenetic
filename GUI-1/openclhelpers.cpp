@@ -1,2 +1,3 @@
 #include "stdafx.h"
-#include <CL/cl.hpp>
+
+#include "openclhelpers.h"
