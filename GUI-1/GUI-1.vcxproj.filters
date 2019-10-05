@@ -15,10 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-    <Text Include="input.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="GUI-1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
