@@ -47,6 +47,9 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="node.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GUI-1.rc">
@@ -59,9 +62,6 @@
     </None>
     <None Include="resource.hm">
       <Filter>Header Files</Filter>
-    </None>
-    <None Include="source.cl">
-      <Filter>Source Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

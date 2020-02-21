@@ -25,11 +25,9 @@
 //OpenGLUT library header
 #include <openglut.h>
 
-
-
-#ifdef _DEBUG
-#define new DEBUG_NEW
-#endif
+//#ifdef _DEBUG
+//#define new DEBUG_NEW
+//#endif
 
 //Macros section
 //#define pi 3.1415926
@@ -38,6 +36,8 @@ const int populationSize = 20;
 #define ISEMPTY printf_s("\n Not a nice path\n");
 
 #pragma endregion
+
+
 
 #pragma region variables
 
@@ -109,8 +109,9 @@ struct Energy_
 
 #pragma endregion
 
-#pragma region nodeManagement
 
+
+#pragma region nodeManagement
 struct node* create_node(short int x,short int y,short int v)
 {//allocate a node in the resultant sequence 
 
@@ -128,7 +129,6 @@ struct node* create_node(short int x,short int y,short int v)
 		return newnode;
 	}
 }
-
 
 void insert_node(short int x,short int y,short int v)
 {	//add a node
@@ -148,7 +148,6 @@ void insert_node(short int x,short int y,short int v)
 
 }    
 
-
 void insert_nodefinal(short int x,short int y,short int v)
 {	//keep the final best 2 nodes
 	newnode= create_node(x,y,v);
@@ -166,8 +165,6 @@ void insert_nodefinal(short int x,short int y,short int v)
 	}
 
 }    
-
-
 
 struct EnergyVar* create_nodeE(short int x1,short int y1,short int x2,short int y2)
 {//allocate a Energyvariation node in the resultant sequence 
@@ -187,7 +184,6 @@ struct EnergyVar* create_nodeE(short int x1,short int y1,short int x2,short int 
 	}
 }
 
-
 void insert_nodeE(short int x1,short int y1,short int x2,short int y2)
 {//
 	newnodeE = create_nodeE(x1,y1,x2,y2);
@@ -205,7 +201,6 @@ void insert_nodeE(short int x1,short int y1,short int x2,short int y2)
 	}
 
 }  
-
 
 void insert_nodeEFinal(short int x1,short int y1,short int x2,short int y2)
 {
@@ -225,11 +220,11 @@ void insert_nodeEFinal(short int x1,short int y1,short int x2,short int y2)
 
 
 }  
-
 #pragma endregion
 
-#pragma region geneticAlgorithm
 
+
+#pragma region geneticAlgorithm
 void result()
 {	//Insert the resultant sequence
 	//printf_s("%dth possibility\n",k+1);
@@ -255,7 +250,6 @@ void result()
 	}
 	//printf_s("\n");
 }
-
 
 void calculateEnergy()
 {// calculateenergy variation
@@ -502,7 +496,6 @@ int findMaxVariation(int size,struct Energy_ Energy[])
 
 }
 
-
 void sortEnergySt()
 {//Sort the HEV structure based on theenergy variation found. 
 	//Function is executed so that the top 10 sequences are choosen and written into the output file
@@ -533,10 +526,9 @@ void sortEnergySt()
 		if(Energy[i].HEV!=-1){
 			for (ptr = first[Energy[i].i];ptr != NULL;ptr = ptr->next)
 			{    
-
-
+				//need to replace file i/o with another data sharing strategy
+				//list of nodes, in the order it is being appended to the file?
 				fprintf_s(fptrO,"(%d,%d) %c\t~", ptr->x,ptr->y,ptr->nxtMov);
-
 			}
 			fprintf_s(fptrO,"%f %s",Energy[i].HEV,"||\n");
 		}
@@ -544,11 +536,11 @@ void sortEnergySt()
 	}
 
 }
-
 #pragma endregion
 
-#pragma region procedures
 
+
+#pragma region procedures
 void procedureTriangular()
 {
 	//Function for performing the fold
@@ -949,7 +941,6 @@ void procedureTriangular()
 
 }
 
-
 void procedureSquare(int Case,int e)
 {
 	//Function for performing the fold
@@ -1251,15 +1242,12 @@ void procedureSquare(int Case,int e)
 	l++;
 
 }
-
 #pragma endregion
 
 
 
 #pragma region graphics
 //Following section for drawing 
-
-
 void lineh(int x,int y,int x2)
 {	//Draw horizontal line
 
@@ -1270,7 +1258,6 @@ void lineh(int x,int y,int x2)
 	glEnd();
 }
 
-
 void linev(int x,int y,int y2)
 {	//Draw vertical line
 	glBegin(GL_LINES);
@@ -1279,7 +1266,6 @@ void linev(int x,int y,int y2)
 	glVertex2i(x,y2);
 	glEnd();
 }
-
 
 void line(int x1,int y1,int x2,int y2)
 {	// Draw a line
@@ -1294,8 +1280,6 @@ void color(float red,float green,float blue)
 {	//for choosing color
 	glColor3f(red,green,blue);
 }
-
-
 
 void points(float x, float y)	
 {	//to draw a point
@@ -1320,14 +1304,11 @@ for( ii = 0; ii < num_segments; ii++)
 glEnd();
 }
 
-
 void myInit(void)
 {//Setting Background Color
 	glClearColor(0.7,0.7,0.6,0);
 	glLoadIdentity();
 }
-
-
 
 void Reshape(int width, int height) 
 {  //othr pages 
@@ -1347,12 +1328,10 @@ void Reshape(int width, int height)
 
 }
 
-
 void circle(int y,int x)
 {	glBegin(GL_POLYGON);
 DrawCircle(x,y,5,10);
 }
-
 
 void Graph_page(void)
 {//for displaying front page and then creating a new window aftr few delay
@@ -1479,9 +1458,7 @@ void Graph_page(void)
 
 }
 
-
 // CAboutDlg dialog used for App About
-
 class CAboutDlg : public CDialogEx
 {
 public:
@@ -1515,11 +1492,7 @@ void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
 END_MESSAGE_MAP()
 
-
 // CGUI1Dlg dialog
-
-
-
 CGUI1Dlg::CGUI1Dlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(CGUI1Dlg::IDD, pParent)
 {
@@ -1545,7 +1518,6 @@ END_MESSAGE_MAP()
 
 
 // CGUI1Dlg message handlers
-
 BOOL CGUI1Dlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
@@ -1631,7 +1603,6 @@ HCURSOR CGUI1Dlg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
 }
-
 
 void CGUI1Dlg::OnBnClickedbtnsquareev2d()
 {
@@ -1750,8 +1721,6 @@ void CGUI1Dlg::OnBnClickedbtnsquareev2d()
 		UpdateData(FALSE) ;
 	}
 }
-
-
 
 void CGUI1Dlg::OnBnClickedbtntriangularev2d()
 {
@@ -1881,8 +1850,6 @@ void CGUI1Dlg::OnEnChangetxtinput()
 
 }
 
-
-
 void CGUI1Dlg::OnEnChangetxtinput2()
 {
 	// TODO:  If this is a RICHEDIT control, the control will not
@@ -1906,14 +1873,10 @@ void CGUI1Dlg::OnEnChangetxtinput2()
 	txt->EnableWindow( FALSE );
 }
 
-
-
 void CGUI1Dlg::OnEnKillfocustxtinput()
 {
 	// TODO: Add your control notification handler code here
 	CEdit * txt=(CEdit *) GetDlgItem(txtInput2);
 	txt->SetWindowTextW(CA2T(str));
 }
-
-
 #pragma endregion

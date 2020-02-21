@@ -46,7 +46,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(CUDA_PATH)\include\;$(MSBuildProjectDirectory)\dependencies\glew\include\;$(MSBuildProjectDirectory)\dependencies\OpenGLUT\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(CUDA_PATH)\lib\Win32\;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(CUDA_PATH)\lib\Win32\;$(MSBuildProjectDirectory)\dependencies\OpenGLUT\;$(MSBuildProjectDirectory)\dependencies\glew\lib\Release\Win32\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -55,7 +55,7 @@
     <ClCompile>
       <PrecompiledHeader>Create</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <Optimization>Disabled</Optimization>
+      <Optimization>Full</Optimization>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -68,7 +68,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>OpenCL.lib;$(MSBuildProjectDirectory)\dependencies\glew\lib\Release\Win32\glew32s.lib;$(MSBuildProjectDirectory)\dependencies\OpenGLUT\OpenGLUT.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>OpenCL.lib;glew32s.lib;OpenGLUT.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <SuppressStartupBanner>false</SuppressStartupBanner>
     </Link>
@@ -121,6 +121,7 @@
   <ItemGroup>
     <ClCompile Include="GUI-1.cpp" />
     <ClCompile Include="GUI-1Dlg.cpp" />
+    <ClCompile Include="node.cpp" />
     <ClCompile Include="openclhelpers.cpp" />
     <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
@@ -130,7 +131,6 @@
   <ItemGroup>
     <None Include="resource.hm" />
     <None Include="res\GUI1.rc2" />
-    <None Include="source.cl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\GUI-1.ico" />
