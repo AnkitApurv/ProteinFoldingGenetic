@@ -68,8 +68,8 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>OpenCL.lib;glew32s.lib;OpenGLUT.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(MSBuildProjectDirectory)\dependencies\glew\lib\Release\Win32\glew32.lib;$(MSBuildProjectDirectory)\dependencies\glew\lib\Release\Win32\glew32s.lib;$(MSBuildProjectDirectory)\dependencies\OpenGLUT\OpenGLUT.lib;$(MSBuildProjectDirectory)\dependencies\OpenGLUT\OpenGLUT_static.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(MSBuildProjectDirectory)\dependencies\OpenGLUT;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <SuppressStartupBanner>false</SuppressStartupBanner>
     </Link>
     <Midl>
@@ -82,6 +82,9 @@
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
+    <PostBuildEvent>
+      <Command>XCOPY "$(MSBuildProjectDirectory)"\dependencies\OpenGLUT\OpenGLUT.dll "$(TargetDir)" /D /K /Y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
