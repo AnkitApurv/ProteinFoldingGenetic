@@ -1,5 +1,8 @@
 #pragma once
+
+#pragma warning( push, 1 )
 #include <CL/cl.hpp>
+#pragma warning( pop )
 
 ///<summary>denotes workload type</summary>
 enum class RequirementType {

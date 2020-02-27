@@ -224,7 +224,7 @@ void insert_nodeEFinal(short int x1,short int y1,short int x2,short int y2)
 
 
 
-#pragma region geneticAlgorithm
+#pragma region postProcessing
 void result()
 {	//Insert the resultant sequence
 	//printf_s("%dth possibility\n",k+1);
@@ -234,19 +234,20 @@ void result()
 
 	}
 	else
-	{	tmpLast[l]=tmpFirst[l]=NULL;
-	tmpLastE[l]=tmpFirstE[l]=NULL;
-	for (ptr = first[k];ptr != NULL;ptr = ptr->next)
-	{    
+	{	
+		tmpLast[l]=tmpFirst[l]=NULL;
+		tmpLastE[l]=tmpFirstE[l]=NULL;
+		for (ptr = first[k];ptr != NULL;ptr = ptr->next)
+		{    
 		//      printf_s("(%d,%d) %c\t", ptr->x,ptr->y,ptr->nxtMov);
-		insert_nodefinal(ptr->x,ptr->y,ptr->v);
-		tmpLast[l]->nxtMov=ptr->nxtMov;
-		tmpLast[l]->index=last[k]->index;
-	}
-	for (ptrE = firstE[k];ptrE != NULL;ptrE = ptrE->next)
-	{    
-		insert_nodeEFinal(ptrE->x1,ptrE->y1,ptrE->x2,ptrE->y2);
-	}
+			insert_nodefinal(ptr->x,ptr->y,ptr->v);
+			tmpLast[l]->nxtMov=ptr->nxtMov;
+			tmpLast[l]->index=last[k]->index;
+		}
+		for (ptrE = firstE[k];ptrE != NULL;ptrE = ptrE->next)
+		{    
+			insert_nodeEFinal(ptrE->x1,ptrE->y1,ptrE->x2,ptrE->y2);
+		}
 	}
 	//printf_s("\n");
 }
